@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuantityMeasurementApp</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="top-bar">
+    <h2>Quantity Measurement App</h2>
+
+    <div class="top-actions">
+        <button onclick="loadHistory()">History</button>
+
+        <div class="analytics-box">
+            <label>Operation:</label>
+            <select id="operationSelect" onchange="loadCount()">
+                <option>Select Option</option>
+                <option value="ADD">ADD</option>
+                <option value="SUBTRACT">SUBTRACT</option>
+                <option value="DIVIDE">DIVIDE</option>
+                <option value="COMPARE">COMPARE</option>
+                <option value="CONVERT">CONVERT</option>
+            </select>
+            
+        </div>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="header">
+    Welcome To Quantity Measurement
+</div>
+
+<div class="container">
+
+    <h3>CHOOSE TYPE</h3>
+
+    <div class="type-cards">
+        <div class="card active" onclick="selectType('LENGTH',this)">Length</div>
+        <div class="card" onclick="selectType('TEMPERATURE',this)">Temperature</div>
+        <div class="card" onclick="selectType('VOLUME',this)">Volume</div>
+        <div class="card" onclick="selectType('WEIGHT',this)">Weight</div>
+    </div>
+
+    <div class="input-box">
+        <div>
+            <label>Value1</label>
+            <input type="number" id="fromValue" value="1">
+            <select id="fromUnit"></select>
+        </div>
+
+        <div>
+            <label>Value2</label>
+            <input type="number" id="toValue" placeholder="Enter value">
+            <select id="toUnit"></select>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="convert()">Convert</button>
+
+        <button id="addBtn" onclick="add()">Add</button>
+        <button id="subBtn" onclick="subtract()">Subtract</button>
+        <button id="divBtn" onclick="divide()">Divide</button>
+        <button onclick="compare()">Compare</button>
+
+        
+    </div>
+    <div class="result-box" id="resultBox">
+        <h3>Result</h3>
+        <p id="resultText">--</p>
+    </div>
+
+    
+
+</div>
+
+<script src="../js/app.js"></script>
+</body>
+</html>
