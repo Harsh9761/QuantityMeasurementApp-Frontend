@@ -1,0 +1,132 @@
+<!-- HEADER -->
+<div class="bg-dark text-white d-flex justify-content-between align-items-center px-4 py-3 shadow">
+
+  <h4 class="mb-0 fw-bold">⚡ Quantity Measurement</h4>
+
+  <div class="d-flex gap-2">
+
+    <button class="btn btn-outline-light btn-sm" (click)="loadHistory()">
+      📜 History
+    </button>
+
+    <select class="form-select form-select-sm w-auto"
+      [(ngModel)]="selectedOperation">
+      <option value="ADD">ADD</option>
+      <option value="SUBTRACT">SUBTRACT</option>
+      <option value="COMPARE">COMPARE</option>
+      <option value="CONVERT">CONVERT</option>
+      <option value="DIVIDE">DIVIDE</option>
+    </select>
+
+    <button class="btn btn-outline-warning btn-sm"
+      (click)="loadCount()">
+      📊 Count
+    </button>
+
+    <button class="btn btn-danger btn-sm" (click)="logout()">
+      🚪 Logout
+    </button>
+
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 p-4">
+
+    <h3 class="text-center mb-4 fw-semibold">Quantity Measurement</h3>
+
+    <!-- TYPE -->
+    <div class="mb-4">
+      <label class="mb-2 text-muted">Select Type</label>
+
+      <div class="d-flex gap-3 flex-wrap">
+
+        <div class="type-card" [class.active]="selectedType==='LENGTH'" (click)="selectType('LENGTH')">📏 Length</div>
+        <div class="type-card" [class.active]="selectedType==='WEIGHT'" (click)="selectType('WEIGHT')">⚖️ Weight</div>
+        <div class="type-card" [class.active]="selectedType==='VOLUME'" (click)="selectType('VOLUME')">🧪 Volume</div>
+        <div class="type-card" [class.active]="selectedType==='TEMPERATURE'" (click)="selectType('TEMPERATURE')">🌡️ Temp</div>
+
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="row mb-3">
+      <div class="col">
+        <input type="number" class="form-control"
+          [(ngModel)]="input.thisQuantityDTO.value"
+          placeholder="Value 1">
+      </div>
+
+      <div class="col">
+        <select class="form-select"
+          [(ngModel)]="input.thisQuantityDTO.unit">
+          <option *ngFor="let unit of units">{{ unit }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <input type="number" class="form-control"
+          [(ngModel)]="input.thatQuantityDTO.value"
+          placeholder="Value 2">
+      </div>
+
+      <div class="col">
+        <select class="form-select"
+          [(ngModel)]="input.thatQuantityDTO.unit">
+          <option *ngFor="let unit of units">{{ unit }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+
+      <button class="btn btn-success" *ngIf="selectedType !== 'TEMPERATURE'" (click)="calculate('ADD')">Add</button>
+      <button class="btn btn-danger" *ngIf="selectedType !== 'TEMPERATURE'" (click)="calculate('SUBTRACT')">Subtract</button>
+      <button class="btn btn-dark" *ngIf="selectedType !== 'TEMPERATURE'" (click)="calculate('DIVIDE')">Divide</button>
+
+      <button class="btn btn-primary" (click)="calculate('COMPARE')">Compare</button>
+      <button class="btn btn-warning" (click)="calculate('CONVERT')">Convert</button>
+
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-card text-center mt-4" *ngIf="result">
+      <div *ngIf="result?.resultValue !== undefined">
+        {{ result.resultValue }} {{ result.resultUnit }}
+      </div>
+      <div *ngIf="result?.resultValue === undefined">
+        {{ result }}
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+<div class="mt-4" *ngIf="historyList.length > 0">
+
+  <h5 class="mb-3 text-muted">📜 History</h5>
+
+  <div class="history-card" *ngFor="let h of historyList">
+
+    <div class="fw-semibold text-primary">
+      {{ h.operation }}
+    </div>
+
+    <div class="text-muted small">
+      {{ h.thisValue }} {{ h.thisUnit }}
+      →
+      {{ h.thatValue }} {{ h.thatUnit }}
+    </div>
+
+    <div class="fw-bold mt-1">
+      = {{ h.resultValue }} {{ h.resultUnit }}
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+</div>

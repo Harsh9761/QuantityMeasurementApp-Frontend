@@ -1,0 +1,100 @@
+/*  Body for auth pages */
+.auth-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+/*  Container for form */
+.auth-container {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  width: 320px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for small lift */
+.auth-container:hover {
+  transform: translateY(-5px);
+}
+
+/*  Headings */
+.auth-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+/*  Input fields */
+.auth-container input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.auth-container input:focus {
+  border-color: #5a67f2;
+}
+
+/*  Buttons */
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-container button:hover {
+  transform: scale(1.03);
+}
+
+.btn-success {
+  background: #38a169;
+  color: white;
+}
+
+.btn-success:hover {
+  background: #2f855a;
+}
+
+.btn-primary {
+  background: #3182ce;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2b6cb0;
+}
+
+/*  Message text */
+.auth-container p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+/*  Links */
+.auth-container a {
+  text-decoration: none;
+  color: #3182ce;
+  font-weight: 500;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
