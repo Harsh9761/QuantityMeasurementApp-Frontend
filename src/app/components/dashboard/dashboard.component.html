@@ -23,8 +23,12 @@
       📊 Count
     </button>
 
-    <button class="btn btn-danger btn-sm" (click)="logout()">
+    <button *ngIf="isLoggedIn" class="btn btn-danger btn-sm" (click)="logout()">
       🚪 Logout
+    </button>
+
+    <button *ngIf="!isLoggedIn" class="btn btn-primary btn-sm" (click)="goToLogin()">
+      🔑 Login
     </button>
 
   </div>

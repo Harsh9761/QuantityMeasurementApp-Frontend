@@ -1,4 +1,4 @@
-<div class="auth-body">
+<!-- <div class="auth-body">
   <div class="auth-container">
     <h3 class="text-center mb-3">Register</h3>
 
@@ -9,6 +9,72 @@
     <button class="btn btn-success w-100" (click)="register()">Register</button>
 
     <p class="text-center mt-2">{{ message }}</p>
+    <p class="text-center mt-2">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div> -->
+
+
+<div class="auth-body">
+  <div class="auth-container">
+    <h3 class="text-center mb-3">Register</h3>
+
+    <!-- NAME -->
+    <input
+      type="text"
+      [(ngModel)]="user.name"
+      name="name"
+      placeholder="Name"
+      class="form-control mb-1"
+      required
+      minlength="3"
+      #name="ngModel"
+    />
+    <small class="text-danger" *ngIf="name.invalid && name.touched">
+      Name must be at least 3 characters
+    </small>
+
+    <!-- EMAIL -->
+    <input
+      type="email"
+      [(ngModel)]="user.email"
+      name="email"
+      placeholder="Email"
+      class="form-control mb-1"
+      required
+      email
+      #email="ngModel"
+    />
+    <small class="text-danger" *ngIf="email.invalid && email.touched">
+      Enter a valid email
+    </small>
+
+    <!-- PASSWORD -->
+    <input
+      type="password"
+      [(ngModel)]="user.password"
+      name="password"
+      placeholder="Password"
+      class="form-control mb-1"
+      required
+      minlength="6"
+      #password="ngModel"
+    />
+    <small class="text-danger" *ngIf="password.invalid && password.touched">
+      Password must be at least 6 characters
+    </small>
+
+    <button
+      class="btn btn-success w-100 mt-2"
+      (click)="register()"
+      [disabled]="name?.invalid || email?.invalid || password?.invalid"
+    >
+      Register
+    </button>
+
+    <p class="text-center mt-2">{{ message }}</p>
+
     <p class="text-center mt-2">
       Already have an account? <a routerLink="/login">Login</a>
     </p>

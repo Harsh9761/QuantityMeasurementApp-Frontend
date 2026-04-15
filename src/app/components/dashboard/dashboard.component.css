@@ -2,13 +2,18 @@
 body {
   background: linear-gradient(135deg, #8aaddc, #58759c) !important;
   font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
 }
 
 /* HEADER */
 .bg-dark {
-  background: rgba(20, 20, 30, 0.9) !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(59, 130, 246, 0.8)) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 h4 {
@@ -18,14 +23,24 @@ h4 {
 
 /* CARD */
 .card {
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
+
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 /* INPUTS */
@@ -96,6 +111,7 @@ h4 {
 /* SPACING IMPROVEMENT */
 .container {
   max-width: 700px;
+  
 }
 
 /* HEADER BUTTON GROUP */

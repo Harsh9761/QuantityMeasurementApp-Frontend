@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { QuantityService } from '../../services/quantity.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,7 +36,9 @@ export class DashboardComponent {
 
   constructor(
     private service: QuantityService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   //  TYPE CHANGE
@@ -62,7 +65,7 @@ export class DashboardComponent {
     this.input.thisQuantityDTO.unit = this.units[0];
     this.input.thatQuantityDTO.unit = this.units[1] || this.units[0];
 
-    this.cdr.detectChanges(); //  safe here
+    this.cdr.detectChanges();
   }
 
   //  CALCULATE
@@ -174,8 +177,55 @@ loadHistory() {
   }
 
   //  LOGOUT
-  logout() {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
+  // logout() {
+  //   localStorage.removeItem("token");
+  //   window.location.href = "/login";
+  // }
+
+
+//   ngOnInit() {
+//   const token = this.route.snapshot.queryParamMap.get('token');
+
+//   if (token) {
+//     console.log("Google Token Received:", token);
+
+//     localStorage.setItem('token', token);
+
+    
+//     this.router.navigate([], {
+//       queryParams: {},
+//       replaceUrl: true
+//     });
+//   }
+// }
+// }
+
+isLoggedIn = false;
+logout() {
+  localStorage.removeItem("token");
+  this.isLoggedIn = false;   // UI update instantly
+  window.location.href = "/login";
+}
+
+ngOnInit() {
+  const token = this.route.snapshot.queryParamMap.get('token');
+
+  if (token) {
+    console.log("Google Token Received:", token);
+
+    localStorage.setItem('token', token);
+
+    this.router.navigate([], {
+      queryParams: {},
+      replaceUrl: true
+    });
   }
+
+  // IMPORTANT: always check login state
+  this.isLoggedIn = !!localStorage.getItem('token');
+}
+
+goToLogin() {
+  this.router.navigate(['/login']);
+}
 }
