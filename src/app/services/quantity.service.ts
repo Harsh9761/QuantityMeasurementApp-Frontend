@@ -57,7 +57,7 @@ export class QuantityService {
 
   constructor(private http: HttpClient) {}
 
-  // 🔥 helper to get token
+  //  helper to get token
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token'); // adjust if you store elsewhere
 
