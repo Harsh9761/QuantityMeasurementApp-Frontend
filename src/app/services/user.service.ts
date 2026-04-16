@@ -18,7 +18,7 @@ export interface LoginDTO {
 })
 export class UserService {
 
-  private BASE_URL = 'http://localhost:8080/api/v1/users';
+  private BASE_URL = 'https://quantitymeasurementapp-2-gz4h.onrender.com/api/v1/users';
 
   constructor(private http: HttpClient) {}
 
