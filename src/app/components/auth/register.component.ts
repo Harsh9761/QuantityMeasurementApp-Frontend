@@ -69,7 +69,7 @@ export class RegisterComponent {
   this.loading = true;
 
   this.http.post(
-    'http://localhost:8080/api/v1/users/register',
+    'https://quantitymeasurementapp-2-gz4h.onrender.com/api/v1/users/register',
     this.user,
     { responseType: 'text' }
   ).subscribe({

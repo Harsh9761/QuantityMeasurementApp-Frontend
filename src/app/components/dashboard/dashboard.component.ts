@@ -176,29 +176,7 @@ loadHistory() {
     this.cdr.detectChanges();
   }
 
-  //  LOGOUT
-  // logout() {
-  //   localStorage.removeItem("token");
-  //   window.location.href = "/login";
-  // }
-
-
-//   ngOnInit() {
-//   const token = this.route.snapshot.queryParamMap.get('token');
-
-//   if (token) {
-//     console.log("Google Token Received:", token);
-
-//     localStorage.setItem('token', token);
-
-    
-//     this.router.navigate([], {
-//       queryParams: {},
-//       replaceUrl: true
-//     });
-//   }
-// }
-// }
+ 
 
 isLoggedIn = false;
 logout() {

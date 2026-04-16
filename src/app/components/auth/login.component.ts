@@ -30,25 +30,6 @@ export class LoginComponent {
     private router: Router   //  for navigation
   ) {}
 
-  // Normal Login (JWT)
-//  login() {
-//   this.http.post('http://localhost:8080/api/v1/users/login', this.user, { responseType: 'text' })
-//     .subscribe({
-//       next: (token: string) => {
-//         console.log("JWT:", token);
-
-//         // save token
-//         localStorage.setItem('token', token);
-
-//         //  direct redirect
-//         this.router.navigateByUrl('/');
-//       },
-//       error: (err) => {
-//         console.error("Login error:", err);
-//         this.message = 'Login failed! ' + (err.error || 'Invalid credentials');
-//       }
-//     });
-// }
 
 login() {
   //  Input validation
@@ -65,7 +46,7 @@ login() {
   }
 
   this.http.post(
-    'http://localhost:8080/api/v1/users/login',
+    'https://quantitymeasurementapp-2-gz4h.onrender.com/api/v1/users/login',
     this.user,
     { responseType: 'text' }
   ).subscribe({
